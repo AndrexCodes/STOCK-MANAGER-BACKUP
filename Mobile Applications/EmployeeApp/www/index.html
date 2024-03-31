@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/loadingScreen.css">
+    <link rel="stylesheet" href="css/add_files_screen.css">
+</head>
+<body>
+    <div id="dashProducts">
+        <!-- <div class="top_bar">
+            <input type="number" name="stk_num" id="stk_num" placeholder="Mpesa Phone">
+            <button onclick="sendStk()">Send</button>
+        </div> -->
+        <header>
+            <img src="img/menu.png" alt="" onclick="fetchAllFiles(true)" style="position: relative;">
+            <p style="position: absolute;left: 50%;transform: translateX(-50%);">SIMBA FARM</p>
+            <button onclick="activateReceipt()" >Print</button>
+        </header>
+        <div id="products">
+           
+        </div>
+        <div class="sellConfirm">
+            <p id="no_of_products">0</p>
+            <button onclick="ConfirmSale()">Confirm</button>
+        </div>
+    </div>
+    <div id="loginScreen">
+        <form name="login_cred" onsubmit="logIn(); return false;">
+            <img src="img/simba_app.png" alt="">
+            <p>Simba Farm</p>
+            <h3>User Login</h3>
+            <input type="text" name="username" id="username" placeholder="User Name">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div id="loading_screen">
+        <p>L</p>
+        <div class="loader"> 
+        </div>
+        <div class="loader"> 
+        </div>
+        <div class="loader"> 
+        </div>
+        <div class="loader"> 
+        </div>
+        <p>DING</p>
+    </div>
+    <div id="add_files_screen">
+        <header>
+            <img src="img/back_white_icon.png" alt="" onclick="screenManager(0)">
+            <img src="img/new-file.png" alt="" onclick="screenManager(3)">
+        </header>
+        <div id="all_files">
+            <div class="unit_file">
+                <div class="unit_file_img">
+                    <img src="img/folder.png" alt="">
+                </div>
+                <div class="unit_base">
+                    <img src="img/folder.png" alt="">
+                    <p>Business License <br> 12-03-2024</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div id="add_file_form">
+        <header>
+            <img src="img/back_white_icon.png" alt="" onclick="screenManager(2)">
+        </header>
+        <form name="add_file" onsubmit="addNewFile(); return false">
+            <p>Add New File</p>
+            <input type="text" name="file_name" id="file_name" placeholder="File name">
+            <div class="input_field">
+                <img src="img/new-file.png" alt="">
+                <input type="file" name="new_file" id="new_file">
+            </div>
+            <button>SUBMIT</button>
+        </form>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

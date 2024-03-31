@@ -1,0 +1,111 @@
+#addProductScreen{
+    background-color: rgb(34, 34, 34);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+}
+
+#addProductScreen header{
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#addProductScreen header div{
+    background-color: rgb(61, 61, 61);
+    height: 50%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 0 0 5px;
+}
+
+#addProductScreen header div img{
+    height: 60%;
+}
+
+#addProductScreen header p{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+#addProductScreen form{
+    width: 90%;
+    height: 88vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#addProductScreen form div{
+    border: 1.5px solid white;
+    width: 55%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#addProductScreen form div img{
+    width: 40%;
+    aspect-ratio: 1;
+    position: absolute;
+    object-fit: cover;
+}
+
+#addProductScreen form input[type=file]{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1000;
+    position: absolute;
+}
+
+#addProductScreen form label{
+    width: 90%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 12px;
+    margin: 10px 0 3px 0;
+}
+
+#addProductScreen form input[type=text], #addProductScreen form input[type=number]{
+    background-color: rgb(73, 73, 73);
+    border: 0;
+    min-height: 10vw;
+    width: 90%;
+    outline: 0; 
+    color: white;
+    border-radius: 100px;
+    padding-left: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#addProductScreen form input[type=submit]{
+    width: 90%;
+    min-height: 8vh;
+    background-color: white;
+    color: rgb(36, 36, 36);
+    border: 0;
+    outline: 0;
+    border-radius: 100px;
+    margin-top: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

@@ -1,0 +1,104 @@
+#updateProducts_screen{
+    background-color: rgb(34, 34, 34);
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#updateProducts_screen header{
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+}
+
+#updateProducts_screen header div{
+    background-color: rgb(61, 61, 61);
+    height: 50%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin: 0 0 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#updateProducts_screen header div img{
+    height: 60%;
+}
+
+#updateProducts_screen header p{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 5.5vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#updateProducts_screen form{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: white;
+}
+
+#updateProducts_screen form div{
+    width: 45%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1.5px solid white;
+    position: relative;
+    overflow: hidden;
+}
+
+#updateProducts_screen form div img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#updateProducts_screen form div input{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+    opacity: 0;
+}
+
+#updateProducts_screen form label{
+    margin: 12px 0 5px 0;
+    width: 90%;
+    font-size: 4vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#updateProducts_screen form > input{
+    background-color: rgb(90, 90, 90);
+    padding: 0 0 0 10px;
+    color: white;
+    border: 0;
+    outline: 0;
+    width: 90%;
+    height: 35px;
+    border-radius: 100px;
+}
+
+#updateProducts_screen form button{
+    background-color: white;
+    margin-top: 12px;
+    width: 40%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

@@ -1,0 +1,42 @@
+#logScreen{
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:max-content;
+    gap: 2px;
+    overflow: auto;
+    display: none;
+}
+
+#logScreen h3{
+    background-color: black;
+    width: 100%;
+    height: 10vh;
+    margin: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    color: red;
+    text-align: center;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+}
+
+#logScreen h3 img{
+    height: 50%;
+    position: absolute;
+    left: 2%;
+}
+
+#logScreen p{
+    background-color: white;
+    width: 100%;
+    height: max-content;
+    margin: 0;
+    text-align: center;
+}
+

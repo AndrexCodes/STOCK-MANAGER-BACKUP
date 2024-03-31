@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusinessManager</title>
+    <style>
+        body{
+            background-color: rgba(0, 0, 0, 0.776);
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="addUser.css">
+    <link rel="stylesheet" href="viewUsers.css">
+</head>
+<body onload="getMassData()">
+    <div id="addUser_screen">
+        <div class="addUserHead">
+            <img src="back_white_icon.png" alt="" onclick="back()">
+        </div>
+        <form class="addUserBody" action="http://127.0.0.1:5000/addUser" target="empty_frame" method="post">
+            <input type="text" name="username" id="" placeholder="User name">
+            <input type="text" name="phone" id="" placeholder="Phone" pattern="[0-9]{11}">
+            <input type="text" name="email" id="" placeholder="Email">
+            <input type="password" name="password_1" id="" placeholder="Password">
+            <input type="password" name="password_2" id="" placeholder="Confirm">
+            <input type="submit" value="AddUser">
+        </form>
+        <iframe id="empty_frame" style="display: none;"></iframe>
+    </div>
+    <div id="viewUsers_screen">
+        <button>+</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

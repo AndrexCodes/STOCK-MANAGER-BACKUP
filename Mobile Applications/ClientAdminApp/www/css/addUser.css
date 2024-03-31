@@ -1,0 +1,95 @@
+#addUser{
+   background-color: rgb(34, 34, 34);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#addUser form{
+    width: 90%;
+    height: 90%;
+    /* border: 1.5px solid; */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 4%; */
+    position: relative;
+}
+#addUser header{
+    /* background-color: rgb(73, 73, 73); */
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+
+}
+#addUser header div{
+    height: 70%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 5px;
+    background-color: rgb(52, 52, 52);
+}
+#addUser header div img{
+    height: 60%;
+    /* background-color: aqua */
+}
+#addUser h3{
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#addUser form input{
+    width: 80%;
+    height: 10vw;
+    background-color: rgb(73, 73, 73);
+    border: 0;
+    border-radius: 100px;
+    outline: none;
+    color: white;
+    margin-top: 7px;
+    padding-left: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#addUser form input[type="submit"]{
+    width: 70%;
+    background-color: white;
+    font-weight: bolder;
+    font-size: medium;
+    color: rgb(52, 52, 52);
+    border: 0;
+    margin-top: 15px;
+    height: 12vw;
+    border-radius: 100px;
+}
+#addUser label{
+    color: #fff;
+    font-size: x-small;
+    width: 80%;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+/* #back_btn{
+    width: 15%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    border: 0;
+    color: #fff;
+    background-color: rgb(34, 34, 34);
+    background-color: aqua;
+} */

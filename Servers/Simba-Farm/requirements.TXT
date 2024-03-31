@@ -1,0 +1,10 @@
+Flask
+Flask-Cors
+passlib
+mysql-connector-python
+jsonlib
+DateTime
+schedule
+threaded
+os-sys
+random2

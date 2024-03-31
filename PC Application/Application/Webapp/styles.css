@@ -1,0 +1,664 @@
+#dashProducts{
+    background-color: rgb(34, 34, 34);
+    width: 100%;
+    height: 100%;
+    /* display: flex; */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    display: none;
+    cursor: pointer;
+    overflow: auto;
+}
+
+#dashProducts header{
+    background-color: rgb(34, 34, 34);
+    border-bottom: 1.5px solid white;
+    width: 100%;
+    height: 15vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(34, 34, 34);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #efefef; 
+    border-radius: 100px;
+}
+
+#dashProducts header input[type=text]{
+    margin-left: 10px;
+    width: 50vw;
+    padding: 5px;
+    height: 2.5vw;
+    border-radius: 100px;
+    border: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-left: 10px;
+    font-size: 1vw;
+    outline: 0;
+}
+
+#dashProducts header input:focus{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: 700;
+}
+
+#dashProducts header p{
+    font-size: 30px;
+    font-weight: 900;
+    margin: 10px;
+    color: rgb(255, 255, 255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#dashProducts header button{
+    background-color: white;
+    width: 4vw;
+    height: 4vw;
+    border-radius: 10px;
+    border: 0;
+    font-size: 10px;
+    font-weight: 900;
+    margin: 1%;
+}
+
+#dashProducts header img{
+    height: 50%;
+    margin: 1%;
+    aspect-ratio: 1;
+}
+
+.top_bar{
+    background-color: white;
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.top_bar input{
+    flex: .8;
+    width: 90%;
+    border-radius: 10px;
+    border: 1.5px solid;
+    height: 50%;
+    border-radius: 10px;
+}
+
+.top_bar button{
+    height: 90%;
+    aspect-ratio: 1;
+    background-color: rgb(85, 255, 47);
+    border: 0;
+    border-radius: 10px;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    height: 85vh;
+    overflow: hidden;
+}
+
+#products{
+    /* background-color: red; */
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-top: 2%;
+    padding-bottom: 20vh;
+    padding-top: 20vh;
+    gap: 2px;
+    overflow: auto;
+}
+
+.unitProduct{
+    /* background-color: white; */
+    background-color: rgb(50, 50, 50);
+    width: 20%;
+    height: 50vh;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 20px;
+    border: 10px solid rgb(50, 50, 50);
+    transition: .3s;
+}
+
+.unitProduct:hover{
+    border: 10px solid rgba(255, 255, 255, 0.63);
+    background-color: white;
+    transform: scale(1.08);
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.unitProduct:hover p{
+    color: black;
+}
+
+.unitProduct:hover button{
+    opacity: 1;
+    width: 80%;
+    transition: .2s;
+}
+
+.unitProduct img{
+    width: 100%;
+    height: 60%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.unitProduct div{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.unitProduct p{
+    margin: 2px;
+    color: white;
+    width: 90%;
+    font-weight: 900;
+    font-size: 1vw;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.unitProduct p:nth-child(2){
+    font-size: 1.8vw;
+}
+
+.unitProduct button{
+    position: absolute;
+    bottom: 0;
+    border: 4px solid rgb(50, 50, 50);
+    transform: translateY(50%);
+    /* width: 80%; */
+    width: 100%;
+    overflow: hidden;
+    padding: 1vw;
+    font-size: 1vw;
+    border-radius: 100px;
+    outline: 0;
+    opacity: 0;
+}
+
+.selling_cart{
+    background-color: rgb(255, 255, 255);
+    width: 25%;
+    height: 97%;
+    border-radius: 20px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.selling_cart h1{
+    margin: 0;
+    width: max-content;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 6px;
+    border-radius: 100px;
+    border: 1.5px solid black;
+}
+
+#selling_cart_items{
+    /* background-color: red; */
+    padding-top: 10px;
+    width: 100%;
+    height: 78%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden auto;
+}
+
+.unit_cart{
+    margin-top: 15px;
+    background-color: rgb(34, 34, 34);
+    width: 97%;
+    height: 5vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content:space-between;
+    color: white;
+}
+
+.unit_cart:last-child{
+    margin-bottom: 20px;
+}
+
+.unit_cart img{
+    height: 90%;
+    width: 20%;
+    margin-left: 5px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.unit_cart p{
+    font-size: 1vw;
+    margin: 3px 0 3px 4px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-weight: 900; */
+}
+
+.unit_cart button{
+    background-color: rgb(255, 62, 62);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 40%;
+    font-size: .8vw;
+    margin-right: 5px;
+    width: 20%;
+    border-radius: 100px;
+    border: 0;
+    outline: 0;
+}
+
+.sellConfirm{
+    background-color: white;
+    border-top: .1vw solid rgb(44, 44, 44);
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+}
+
+.sellConfirm p{
+    margin: 1%;
+    font-weight: 1000;
+    font-size: 1.3vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(36, 36, 36);
+}
+
+.sellConfirm button{
+    height: max-content;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background-color: rgb(47, 255, 99);
+    font-weight: 1000;
+    font-size: 18px;
+}
+
+#loginScreen{
+    background-color: rgb(0, 5, 34);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* display: none; */
+    justify-content: center;
+    align-items: center;
+}
+
+#loginScreen > img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .4;
+}
+
+#loginScreen form{
+    /* background-color: rgb(34, 34, 34); */
+    /* background-color: rgb(109, 109, 109); */
+    background-color: rgba(255, 255, 255, 0.142);
+    backdrop-filter: blur(50px);
+    height: 40vw;
+    width: 30%;
+    border-radius: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#loginScreen form img{
+    width: 20%;
+    animation: move 1s;
+    animation-delay: 1.8s;
+}
+
+@keyframes move {
+    from{transform: translateX(500px) rotateZ(360deg)}
+} 
+
+/* #loginScreen form h3{
+    margin: 0;
+} */
+
+
+form h2{
+    width: 90%;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+form h1{
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#loginScreen form input{
+    margin: 20px;
+    width: 90%;
+    color: rgb(30, 30, 30);
+    height: 3.4vw;
+    font-size: 1vw;
+    font-weight: 900;
+    border-radius: 10px;
+    border: 0;
+    padding: 0 0 0 10px;
+    outline: 0;
+    transition: .6s;
+}
+
+#loginScreen form input:focus{
+    background-color: transparent;
+    border: 1.5px solid rgb(255, 255, 255);
+    color: white;
+    transition: .6s;
+}
+
+#loginScreen form input:focus::placeholder{
+    background-color: transparent;
+    color: white;
+}
+
+#loginScreen form input[type=submit]{
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    font-weight: 800;
+    color: rgb(65, 65, 65);
+    padding: 0;
+}
+
+#loginScreen form input::placeholder{
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+header > div{
+    position: relative;
+    /* background-color: red; */
+    height: 50px;
+    width: 3vw;
+    margin-left: 10px;
+}
+
+
+header > div input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(-4%);
+}
+
+header > div input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+    width: 90%;
+    height: 90%;
+}
+.sidebarIconToggle {
+    /* background-color: pink; */
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.spinner {
+    /* transition: all 0.3s; */
+    box-sizing: border-box;
+    height: 3px;
+    width: 90%;
+    background-color: #fff;
+    margin: 5px;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    transform: rotate(135deg);
+    margin: 0;
+    position: absolute;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    /* box-sizing: border-box; */
+    transform: rotate(-135deg);
+    margin: 0;
+    position: absolute;
+}
+
+
+
+#sidebarMenu {
+    height: 85%;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    transform: translateX(-120%);
+    transition: transform 250ms ease-in-out;
+    /* background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%); */
+    background-color: rgb(0, 255, 0);
+    background-color: rgb(20, 20, 20);
+}
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li{
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li span{
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+.sidebarMenuInner li a{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+
+.three-body {
+    --uib-size: 50px;
+    --uib-speed: 0.8s;
+    --uib-color: #5D3FD3;
+    position: relative;
+    display: inline-block;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+   }
+   
+   .three-body__dot {
+    position: absolute;
+    height: 100%;
+    width: 30%;
+   }
+   
+   .three-body__dot:after {
+    content: '';
+    position: absolute;
+    height: 0%;
+    width: 100%;
+    padding-bottom: 100%;
+    background-color: var(--uib-color);
+    border-radius: 50%;
+   }
+   
+   .three-body__dot:nth-child(1) {
+    bottom: 5%;
+    left: 0;
+    transform: rotate(60deg);
+    transform-origin: 50% 85%;
+   }
+   
+   .three-body__dot:nth-child(1)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite ease-in-out;
+    animation-delay: calc(var(--uib-speed) * -0.3);
+   }
+   
+   .three-body__dot:nth-child(2) {
+    bottom: 5%;
+    right: 0;
+    transform: rotate(-60deg);
+    transform-origin: 50% 85%;
+   }
+   
+   .three-body__dot:nth-child(2)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite
+       calc(var(--uib-speed) * -0.15) ease-in-out;
+   }
+   
+   .three-body__dot:nth-child(3) {
+    bottom: -5%;
+    left: 0;
+    transform: translateX(116.666%);
+   }
+   
+   .three-body__dot:nth-child(3)::after {
+    top: 0;
+    left: 0;
+    animation: wobble2 var(--uib-speed) infinite ease-in-out;
+   }
+   
+   @keyframes spin78236 {
+    0% {
+     transform: rotate(0deg);
+    }
+   
+    100% {
+     transform: rotate(360deg);
+    }
+   }
+   
+   @keyframes wobble1 {
+    0%,
+     100% {
+     transform: translateY(0%) scale(1);
+     opacity: 1;
+    }
+   
+    50% {
+     transform: translateY(-66%) scale(0.65);
+     opacity: 0.8;
+    }
+   }
+   
+   @keyframes wobble2 {
+    0%,
+     100% {
+     transform: translateY(0%) scale(1);
+     opacity: 1;
+    }
+   
+    50% {
+     transform: translateY(66%) scale(0.65);
+     opacity: 0.8;
+    }
+   }
+
+
+/* Section for custom alert box */
+/* #custom_alert_screen{
+    width: 100vw;
+    height: 100vh;
+} */
+   

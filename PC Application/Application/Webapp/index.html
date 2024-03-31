@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loadingScreen.css">
+    <link rel="stylesheet" href="add_files_screen.css">
+</head>
+
+<body>
+    <div id="dashProducts">
+        <!-- <div class="top_bar">
+            <input type="number" name="stk_num" id="stk_num" placeholder="Mpesa Phone">
+            <button onclick="sendStk()">Send</button>
+        </div> -->
+        <header>
+            <!-- <img src="menu.png" alt="" onclick="fetchAllFiles(true)" style="position: relative;"> -->
+            <!-- <p>STOCK MANAGER</p> -->
+            <div>
+                <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+                <label for="openSidebarMenu" class="sidebarIconToggle">
+                    <div class="spinner diagonal part-1"></div>
+                    <div class="spinner horizontal"></div>
+                    <div class="spinner diagonal part-2"></div>
+                </label>
+                <div id="sidebarMenu">
+                    <ul class="sidebarMenuInner">
+                        <li>SIMBA FARM <span>Machinery Company</span></li>
+                        <li>Product Shortcut</li>
+                        <li onclick="screenManager(2)">Files & Docs</li>
+                        <li>Daily Sales</li>
+                        <li>Clear Cart</li>
+                        <li onclick="LogOut()">Log Out</li>
+                        <li><span style="text-align: center;">Developed by ionextechsolutions <br> 0795359098</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <input type="text" name="product_filter" id="product_filter" placeholder="Search here ..."
+                oninput="FilterProducts()">
+            <button onclick="activateReceipt()">Print</button>
+        </header>
+        <main>
+            <div id="products">
+
+            </div>
+            <div class="selling_cart">
+                <h1>Customers Cart</h1>
+                <div id="selling_cart_items">
+                    <!-- <div class="unit_cart">
+                        <img src="https://ionextechsolutions.com/businessmanager/images/USER_1~~UNIT_BIZ_2~~PRODUCT_5O68BR.jpg" alt="">
+                        <p>Name: Product Name</p>
+                        <p>Price: Ksh 3,000</p>
+                        <p>Total: Ksh 3,000</p>
+                        <p>5 Units</p>
+                        <button>Remove</button>
+                    </div> -->
+
+                </div>
+                <div class="sellConfirm">
+                    <p id="cart_total">Ksh 0</p>
+                    <button onclick="ConfirmSale()">Confirm</button>
+                    <!-- <button>Confirm</button> -->
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="loginScreen">
+        <img src="pexels-lukas-669619.jpg" alt="">
+        <form name="login_cred" onsubmit="logIn(); return false;">
+            <!-- <img src="simba_app.png" alt=""> -->
+            <h1>STOCK MANAGER</h1>
+            <h2>User Login</h2>
+            <input type="text" name="username" id="username" placeholder="User Name" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+            <!-- <a href="">Forgot Your Password? Reset Here</a> -->
+        </form>
+    </div>
+    <div id="loading_screen">
+        <div class="three-body">
+            <div class="three-body__dot"></div>
+            <div class="three-body__dot"></div>
+            <div class="three-body__dot"></div>
+        </div>
+    </div>
+    <div id="add_files_screen">
+        <header>
+            <img src="back_white_icon.png" alt="" onclick="screenManager(0)">
+            <img src="new-file.png" alt="" onclick="screenManager(3)">
+        </header>
+        <div id="all_files">
+            <div class="unit_file">
+                <div class="unit_file_img">
+                    <img src="folder.png" alt="">
+                </div>
+                <div class="unit_base">
+                    <img src="folder.png" alt="">
+                    <p>Business License <br> 12-03-2024</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="add_file_form">
+        <header>
+            <img src="back_white_icon.png" alt="" onclick="screenManager(2)">
+        </header>
+        <form name="add_file" onsubmit="addNewFile(); return false">
+            <p>Add New File</p>
+            <input type="text" name="file_name" id="file_name" placeholder="File name">
+            <div class="input_field">
+                <img src="new-file.png" alt="">
+                <input type="file" name="new_file" id="new_file">
+            </div>
+            <button>SUBMIT</button>
+        </form>
+    </div>
+    <!-- <div id="custom_alert_screen">
+        
+    </div> -->
+    <script src="socket.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

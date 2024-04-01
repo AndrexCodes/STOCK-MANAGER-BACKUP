@@ -29,15 +29,16 @@
 <!-- <body> -->
     <div id="loginScreen">
         <form name="login_cred">
-            <img src="img/simba_app.png" alt="">
+            <img src="img/simba_app.png" alt="logo_img">
             <p style="font-size: 7vw;font-weight: 900;">StockManager</p>
             <p style="font-size: 4vw;">Get started with StockManager now!</p>
-            <label for="">User Name</label>
-            <input type="text" name="username" id="username" required>
+            <label for="">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter Username" required>
             <label for="">Password</label>
-            <input type="password" name="password" id="password" required>
-            <input type="button" value="Log In" onclick="login()">
+            <input type="password" name="password" id="password" placeholder="Enter Password" required>
+            <input type="button" value="Sign In" onclick="login()">
         </form>
+        <i>Developed by IonexTech</i>
     </div>
     <div id="dashScreen">
         <header>
@@ -63,14 +64,7 @@
             <input type="text" name="search_home" id="search_home" placeholder="Search  here ........" style="display: none;" oninput="Businesssearch()">
         </div>
         <div id="userUnits">
-            <div class="unitUnit">
-                <p>K</p>
-                <span>Kenol Simba</span>
-            </div>
-            <div class="unitUnit">
-                <p>M</p>
-                <span>Muranga Simba</span>
-            </div>
+            <!-- Set up a nothing animation -->
         </div>
         <div class="addUnit">
             <img src="img/home_icon.png" alt="">
@@ -85,7 +79,7 @@
             </div>
             <p>Stocks Manager</p>
             <div class="product_menu">
-                <input type="checkbox" name="product_menu" id="product_menu">
+                <input type="checkbox" name="product_menu" id="product_menu" required>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -170,7 +164,7 @@
             <div onclick="screenManager(2)">
                 <img src="img/back_white_icon.png" alt="">
             </div>
-            <p>Add New product</p>
+            <p>New product</p>
         </header>
         <form name="addProductForm" onsubmit="AddProduct(event); return false">
             <div>
@@ -265,7 +259,7 @@
                 </header>
                 <form action="" onsubmit="updateClientDetails(true); event.preventDefault()">
                     <div>
-                        <p id="emplyee_assets">Ksh 3,000</p>
+                        <p id="emplyee_assets">Ksh ----</p>
                     </div>
                     <label for="">User Name</label>
                     <input type="text" name="employee_name" id="employee_name">

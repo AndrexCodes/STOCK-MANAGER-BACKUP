@@ -117,7 +117,7 @@ def getUnitProducts():
     user_id = request_data["user_id"]
     unit_id = request_data["unit_id"]
     userAccount = models.UserAccount(business_id=user_id)
-    if not userAccount.is_valid(): return False
+    if not userAccount.is_valid(): return jsonify([])
     products = models.Product(business_id=user_id, unit_business_id=unit_id)
     return jsonify(products.GetProducts())
 
@@ -651,5 +651,5 @@ def ClientDisconnection():
             connected_devices.pop(x)
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    socketio.run(app, port=5000, debug=True)
+    app.run(debug=True)
+    # socketio.run(app, port=5000, debug=True)

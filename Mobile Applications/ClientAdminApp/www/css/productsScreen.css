@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 #productsScreen header div:first-child{
@@ -116,8 +117,18 @@
     color: white;
     padding: 0 0 0 20px;
     margin-bottom: 10px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
+.product_search input:focus{
+    background-color: white;
+    color: black;
+}
+
+/* .product_search input:{
+    background-color: white;
+    color: black;
+} */
 
 #AllProducts{
     width: 99%;
@@ -154,7 +165,7 @@
 }
 
 .unitProduct{
-    width: 90%;
+    width: 88%;
     max-height: 15vh;
     min-height: 15vh;
     border-bottom: 1px solid rgb(214, 214, 214);
@@ -162,6 +173,17 @@
     display: flex;
     align-items: center;
     position: relative;
+    padding-left: 20px;
+}
+
+.unitProduct::after{
+    content: "";
+    background-color: rgb(226, 226, 226);
+    position: absolute;
+    left: 6px;
+    height: 80%;
+    width: 4px;
+    border-radius: 100px;
 }
 
 .unitProduct img{
@@ -178,12 +200,8 @@
     color: white;
     margin: 0 0 0 10px;
     font-size: 12px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
-
-/* .unitProduct:last-child{
-    margin-bottom: 10%;
-} */
 
 .addProducts{
     background-image: linear-gradient(45deg, cyan, green);

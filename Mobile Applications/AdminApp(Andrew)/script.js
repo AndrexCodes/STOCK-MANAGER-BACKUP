@@ -92,6 +92,6 @@ function back(){
     document.getElementById("addUser_screen").style.display = "none"
 }
 
-setInterval(()=>{
-    getMassData()
-}, 20000)
+// setInterval(()=>{
+//     getMassData()
+// }, 20000)

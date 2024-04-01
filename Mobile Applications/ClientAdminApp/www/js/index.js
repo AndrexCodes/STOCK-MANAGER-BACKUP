@@ -18,7 +18,6 @@ const allScreens = [dashscreen, loginScreen, productsScreen, addProductScreen, l
 var all_businesses = []
 var all_products = []
 
-
 function killAllScreens(){
     allScreens.forEach(element=>{
         element.style.display = "none"
@@ -36,7 +35,10 @@ function screenManager(screen_no){
 
 function login(){
     const login_form = document.forms["login_cred"]
-    console.log(login_form["username"].value)
+    if(login_form["username"].value.length === 0 || login_form["password"].value.length === 0){
+        alert("Please enter a username and password")
+        return
+    }
     var url = `${home_url}/userLogin`
     var options = {
         method: "POST",
@@ -66,6 +68,7 @@ function login(){
     })
     .catch(()=>{
         alert("Please check your internet Connection")
+        loading_screen.style.display = "none"
     })
 }
 
@@ -163,19 +166,6 @@ function getMassUnits(state){
     })
 }
 
-// setInterval(()=>{
-//     getMassUnits(false)
-// }, 60000)
-
-// setInterval(()=>{
-//     getUnitProducts(localStorage.getItem("current_business_id"), false)
-// }, 50000)
-
-// setInterval(()=>{
-//     fetchAllFiles(false)
-// }, 40000)
-
-
 function getUnitProducts(unit_id, state){
     localStorage.setItem("current_business_id", unit_id)
    var url = `${home_url}/getUnitProducts`
@@ -233,7 +223,7 @@ function getUnitProducts(unit_id, state){
             var view_product_name = document.getElementById("view_product_name")
             view_product_name.innerHTML = y[x][3]
             var view_product_price = document.getElementById("view_product_price")
-            view_product_price.innerHTML = `Ksh ${y[x][4]}`
+            view_product_price.innerHTML = `Kes ${y[x][4]}`
             var edit_product_price = document.getElementById("edit_product_price")
             edit_product_price.value = y[x][4]
             var edit_product_quantity = document.getElementById("edit_product_quantity")
@@ -243,7 +233,8 @@ function getUnitProducts(unit_id, state){
             var view_product_sold = document.getElementById("view_product_sold")
             view_product_sold.innerHTML = `${y[x][7]} Units`
             var view_product_assets = document.getElementById("view_product_assets")
-            view_product_assets.innerHTML = `Ksh ${y[x][6]}`
+            // view_product_assets.innerHTML = `Ksh ${y[x][6]}`
+            view_product_assets.innerHTML = `Kes${parseInt(y[x][4])*parseInt(y[x][8])}`
         })
         var img = document.createElement("img")
         img.src = y[x][5]
@@ -467,6 +458,9 @@ function deleteProduct(){
 function deleteBusiness(){
     var user_id = localStorage.getItem("user_id")
     var business_id = localStorage.getItem("unit_id")
+    if(!confirm("Are you sure you want to delete business?")){
+        return
+    }
     var url = `${home_url}/deleteUnit`
     var data = {
         "user_id": user_id,

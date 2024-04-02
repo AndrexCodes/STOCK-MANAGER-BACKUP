@@ -3,6 +3,7 @@ from datetime import datetime
 from random import randint
 import os
 import json
+import notifications
 
 import mysql.connector as db
 conn = db.connect(user="Andrew", host="127.0.0.1", password="andrew", database="businessmanager")
@@ -66,10 +67,16 @@ class UserAccount(Generals):
         pass
 
     def GetUsers(self):
-        sql_query = """select * from users"""
-        cursor.execute(sql_query)
-        sql_response = cursor.fetchall()
-        return sql_response
+        if self.business_id:
+            sql_query = """select * from users where business_id = %s"""
+            cursor.execute(sql_query, [self.business_id])
+            sql_response = cursor.fetchall()
+            return sql_response[0]
+        else:
+            sql_query = """select * from users"""
+            cursor.execute(sql_query)
+            sql_response = cursor.fetchall()
+            return sql_response
 
     def AuthUser(self):
         sql_query = """select password, business_id from users where business_username = %s or phone = %s or email = %s"""
@@ -338,7 +345,11 @@ class Product(Generals):
                 if rem_items < product_threshold:
                     # Send actual notification including product details -> (Name, Quantity, datetime)
                     # Use SMS Only, Emails for future implementations
-                    pass
+                    user = UserAccount(business_id=self.business_id)
+                    user_data = user.GetUsers()
+                    message = f"Notification for {user_data[1]}\nPRODUCT BELOW THRESHOLD OF {product_threshold}\n\nProduct Name : {y[3]}\nProduct Rem  : {rem_items}\n\nThe following message is  auto-generated please DONT REPLY\nDelivered by IonexTechSolutions"
+                    communication = notifications.SMS(user_data[2], message)
+                    communication.SendSMS()
                 # End of Block
 
                 sql_query = """update products set datetime = %s, total_assets = %s, sold = %s, rem = %s where business_id = %s and unit_business_id = %s and product_id = %s"""

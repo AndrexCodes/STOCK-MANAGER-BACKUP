@@ -332,6 +332,92 @@ def processing():
         "message": main_response
     })
 
+# @app.route("/ProcessSales_2", methods=["GET", "POST"])
+# def processing_2():
+#     # {'business_id': 'USER_1', 'unit_business_id': 'UNIT_BIZ_5', 'product_id': 'PRODUCT_1', 'employee_id': 'EMPLOYEE_9792750894674475300272', 'quantity': 10}
+#     if request.get_json():
+#         request_data = request.get_json()
+#         business_id = request_data["business_id"]
+#         unit_business_id = request_data["unit_business_id"]
+#         product_ids = request_data["product_id"]
+#         employee_id = request_data["employee_id"]
+#         quantitys = request_data["quantity"]
+#         main_response = ""
+#         sql_query = """select count(*) from employees where business_id = %s and unit_business_id = %s and employee_id = %s"""
+#         cursor.execute(sql_query,[business_id, unit_business_id, employee_id])
+#         num = cursor.fetchone()[0]
+#         if num == 1:
+#             sql_query = """select * from products where business_id = %s and unit_business_id = %s"""
+#             cursor.execute(sql_query, [business_id, unit_business_id])
+#             sql_response = cursor.fetchall()
+#             for x in range(len(product_ids)):
+#                 for y in sql_response:
+#                     if not product_ids[x] == y[2]: continue
+#                     sold_items = int(y[7]) + int(quantitys[x])
+#                     rem_items = int(y[8]) - int(quantitys[x])
+#                     if rem_items < 0: 
+#                         main_response = main_response + f"Failed sales for product: {y[3]}\n"
+#                         continue
+#                     min_total = int(quantitys[x]) * int(y[4])
+#                     total_assets = int(y[6]) + int(min_total)
+            
+#                     sql_query = """update products set datetime = %s, total_assets = %s, sold = %s, rem = %s where business_id = %s and unit_business_id = %s and product_id = %s"""
+#                     cursor.execute(sql_query, [str(datetime.now()).split(" ")[0],str(total_assets), str(sold_items), str(rem_items), business_id, unit_business_id, product_ids[x]])
+#                     conn.commit()
+
+#                     sql_query = """insert into employee_sales (business_id, unit_business_id, employee_id, product_id, quantity, total_cash, datetime)
+#                                 values(%s, %s, %s, %s, %s, %s, %s)"""
+#                     cursor.execute(sql_query, [business_id, unit_business_id, employee_id, product_ids[x], str(quantitys[x]), str(min_total), str(datetime.now())])
+#                     conn.commit()
+
+#                     sql_query = """select * from receipts where state = %s"""
+#                     cursor.execute(sql_query, ["Pending"])
+#                     results = cursor.fetchone()
+
+#                     if results:
+#                         receipt_id = results[2]
+#                         query = json.loads(results[3])
+#                         current_query = {
+#                             "product_id": product_ids[x],
+#                             "product_name": y[3],
+#                             "product_quantity": quantitys[x],
+#                             "product_cost": int(y[4])*int(quantitys[x])
+#                         }
+#                         query.append(current_query)
+#                         state = "Pending"
+#                         selltime = str(datetime.now())
+
+#                         sql_query = """update receipts set query = %s where business_id = %s and unit_business_id = %s and receipt_id = %s"""
+#                         cursor.execute(sql_query, [json.dumps(query), business_id, unit_business_id, receipt_id])
+#                         conn.commit()
+
+#                     else:
+#                         receipt_id = models.Generals().GenCode(15)
+#                         query = [
+#                             {
+#                                 "product_id": product_ids[x],
+#                                 "product_name": y[3],
+#                                 "product_quantity": quantitys[x],
+#                                 "product_cost": int(y[4])*int(quantitys[x])
+#                             }
+#                         ]
+#                         state = "Pending"
+#                         selltime = str(datetime.now())
+
+#                         sql_query = """insert into receipts (business_id, unit_business_id, receipt_id, query, state, datetime)
+#                                         values(%s, %s, %s, %s, %s, %s)"""
+#                         cursor.execute(sql_query, [business_id, unit_business_id, receipt_id, json.dumps(query), state, selltime])
+#                         conn.commit()
+            
+#             return jsonify({
+#                 "state": "True",
+#                 "message": main_response
+#             })
+            
+#     return jsonify({
+#                     "state": "False"
+#                 })
+
 @app.route("/ProcessSales_2", methods=["GET", "POST"])
 def processing_2():
     # {'business_id': 'USER_1', 'unit_business_id': 'UNIT_BIZ_5', 'product_id': 'PRODUCT_1', 'employee_id': 'EMPLOYEE_9792750894674475300272', 'quantity': 10}
@@ -342,80 +428,18 @@ def processing_2():
         product_ids = request_data["product_id"]
         employee_id = request_data["employee_id"]
         quantitys = request_data["quantity"]
-        main_response = ""
-        sql_query = """select count(*) from employees where business_id = %s and unit_business_id = %s and employee_id = %s"""
-        cursor.execute(sql_query,[business_id, unit_business_id, employee_id])
-        num = cursor.fetchone()[0]
-        if num == 1:
-            sql_query = """select * from products where business_id = %s and unit_business_id = %s"""
-            cursor.execute(sql_query, [business_id, unit_business_id])
-            sql_response = cursor.fetchall()
-            for x in range(len(product_ids)):
-                for y in sql_response:
-                    if not product_ids[x] == y[2]: continue
-                    sold_items = int(y[7]) + int(quantitys[x])
-                    rem_items = int(y[8]) - int(quantitys[x])
-                    if rem_items < 0: 
-                        main_response = main_response + f"Failed sales for product: {y[3]}\n"
-                        continue
-                    min_total = int(quantitys[x]) * int(y[4])
-                    total_assets = int(y[6]) + int(min_total)
-            
-                    sql_query = """update products set datetime = %s, total_assets = %s, sold = %s, rem = %s where business_id = %s and unit_business_id = %s and product_id = %s"""
-                    cursor.execute(sql_query, [str(datetime.now()).split(" ")[0],str(total_assets), str(sold_items), str(rem_items), business_id, unit_business_id, product_ids[x]])
-                    conn.commit()
+    
+        product = models.Product(business_id=business_id, unit_business_id=unit_business_id)
+        main_response = product.MakesSale_2(product_ids=product_ids, quantitys=quantitys, employee_id=employee_id)
 
-                    sql_query = """insert into employee_sales (business_id, unit_business_id, employee_id, product_id, quantity, total_cash, datetime)
-                                values(%s, %s, %s, %s, %s, %s, %s)"""
-                    cursor.execute(sql_query, [business_id, unit_business_id, employee_id, product_ids[x], str(quantitys[x]), str(min_total), str(datetime.now())])
-                    conn.commit()
+        return jsonify({
+            "state": "True",
+            "message": main_response
+        })
 
-                    sql_query = """select * from receipts where state = %s"""
-                    cursor.execute(sql_query, ["Pending"])
-                    results = cursor.fetchone()
-
-                    if results:
-                        receipt_id = results[2]
-                        query = json.loads(results[3])
-                        current_query = {
-                            "product_id": product_ids[x],
-                            "product_name": y[3],
-                            "product_quantity": quantitys[x],
-                            "product_cost": int(y[4])*int(quantitys[x])
-                        }
-                        query.append(current_query)
-                        state = "Pending"
-                        selltime = str(datetime.now())
-
-                        sql_query = """update receipts set query = %s where business_id = %s and unit_business_id = %s and receipt_id = %s"""
-                        cursor.execute(sql_query, [json.dumps(query), business_id, unit_business_id, receipt_id])
-                        conn.commit()
-
-                    else:
-                        receipt_id = models.Generals().GenCode(15)
-                        query = [
-                            {
-                                "product_id": product_ids[x],
-                                "product_name": y[3],
-                                "product_quantity": quantitys[x],
-                                "product_cost": int(y[4])*int(quantitys[x])
-                            }
-                        ]
-                        state = "Pending"
-                        selltime = str(datetime.now())
-
-                        sql_query = """insert into receipts (business_id, unit_business_id, receipt_id, query, state, datetime)
-                                        values(%s, %s, %s, %s, %s, %s)"""
-                        cursor.execute(sql_query, [business_id, unit_business_id, receipt_id, json.dumps(query), state, selltime])
-                        conn.commit()
-            
-            return jsonify({
-                "state": "True",
-                "message": main_response
-            })
-            
+        
     return jsonify({
-                    "state": "False"
+                    "state": "False",
                 })
 
 @app.route("/getProductLogs", methods=["GET", "POST"])
@@ -651,5 +675,5 @@ def ClientDisconnection():
             connected_devices.pop(x)
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    # socketio.run(app, port=5000, debug=True)
+    # app.run(debug=True)
+    socketio.run(app, port=5000, debug=True)

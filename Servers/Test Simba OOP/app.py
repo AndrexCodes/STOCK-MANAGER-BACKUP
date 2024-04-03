@@ -27,7 +27,7 @@ app.config["Secret"] = secret
 # db_url = "postgres://businessmanager_ilqy_user:HkLLO57KcImibkqlmIOj7sYSsrM6Jkxa@dpg-cm5sluen7f5s73e7smag-a.oregon-postgres.render.com/businessmanager_ilqy"
 # conn = db.connect(db_url)
 # 1%^s*eXj?wZH
-conn = db.connect(user="Andrew", host="127.0.0.1", password="andrew", database="businessmanager")
+conn = db.connect(user="Andrew", host="127.0.0.1", password="andrew", database="businessmanager", autocommit= True)
 cursor = conn.cursor()
 
 
@@ -618,6 +618,10 @@ def activateReceipt():
 #             "data": response
 #         })
 
+
+pool_conn = db.connect(user="Andrew", host="127.0.0.1", password="andrew", database="businessmanager", autocommit= True)
+pool_cursor = pool_conn.cursor()
+pool_cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
 connected_devices = []
 
 def SendPrintingReports():
@@ -628,13 +632,9 @@ def SendPrintingReports():
             business_id = x["business_id"]
             unit_business_id = x["unit_business_id"]
             sql_query = """select * from receipts where business_id = %s and unit_business_id = %s and state = %s"""
-            cursor.execute(sql_query, [business_id, unit_business_id, "False"])
-            response = cursor.fetchall()
+            pool_cursor.execute(sql_query, [business_id, unit_business_id, "False"])
+            response = pool_cursor.fetchall()
             print("Checking for receipts .....")
-            print(response)
-            # Issue -> The server is caching responses from the db server
-            # Resolve by testing on a live server
-            # Resolve by reaseach on removing caching
             if response:
                 print("------------ RESPONSE FROM PRINTING ------------")
                 print(response)

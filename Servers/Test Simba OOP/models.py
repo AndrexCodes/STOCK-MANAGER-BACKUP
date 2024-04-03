@@ -368,7 +368,6 @@ class Product(Generals):
                     "product_cost": int(y[4])*int(quantitys[x])
                 }
                 r = Receipt(business_id=self.business_id, unit_business_id=self.unit_business_id, query=current_query)
-                r.CreateReceipt()
                 if not r.CreateReceipt(): main_response = main_response + f"Failed sales for product: {y[3]}\n"; continue
         return main_response
                 
@@ -526,10 +525,12 @@ class Receipt(Generals):
                 response = cursor.fetchall()
                 if not response:
                     break
-
+            
+            print(self.query)
             sql_query = """insert into receipts (business_id, unit_business_id, receipt_id, query, state, datetime)
                             values(%s, %s, %s, %s, %s, %s)"""
             sql_data = [self.business_id, self.unit_business_id, self.receipt_id, json.dumps([self.query]), self.state, self.datetime]
+            print(sql_data)
             for x in sql_data:
                 if not x: return False
             cursor.execute(sql_query, sql_data)
